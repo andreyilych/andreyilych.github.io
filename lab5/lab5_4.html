@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Использование flex при построении колонок</title>
+    <style type="text/css">
+        .container {
+            min-width: 1000px;
+            display: flex; 
+            justify-content: center;
+            flex-flow: nowrap row;
+            align-content: flex-start;
+        }
+
+        #left,
+        #right,
+        #center {
+            flex: 0 auto;
+        }
+
+        #left {
+            background: #ccf;
+            width: 200px;
+            margin-right: 10px;
+            order: 1;
+        }
+
+        #right {
+            background: #fcc;
+            width: 200px;
+            margin-left: 10px;
+            order: 3;
+        }
+
+        #center {
+            background: #cfc;
+            width: 600px;
+            order: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="left">left<br>left<br>left<br>left<br>left</div>
+        <div id="center">center text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text</div>
+        <div id="right">right<br>right<br>right<br>right</div>
+    </div>
+</body>
+
+</html>

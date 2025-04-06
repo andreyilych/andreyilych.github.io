@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Использование inline-block при построении колонок</title>
+    <style type="text/css">
+        .wrapper {
+            min-width: 1000px;
+            /* font-size: 0; */
+            /* почему-то колонки пропадают из-за font-size  */
+        }
+
+        #left,
+        #right,
+        #center {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #left {
+            background: #ccf;
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        #right {
+            background: #fcc;
+            width: 200px;
+            margin-left: 10px;
+        }
+
+        #center {
+            background: #cfc;
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="left">left<br>left<br>left<br>left<br>left</div>
+        <div id="center">center text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text</div>
+        <div id="right">right<br>right<br>right<br>right</div>
+    </div>
+</body>
+
+</html>

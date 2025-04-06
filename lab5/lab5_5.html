@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Использование grid при построении колонок</title>
+    <style type="text/css">
+        .container {
+            min-width: 1000px;
+            display: grid;
+            grid-template-columns: 200px 600px 200px;
+            grid-gap: 10px;
+            justify-content: center; 
+        }
+        
+        #left,
+        #right,
+        #center {
+            flex: 0 auto;
+        }
+
+        #left {
+            background: #ccf;
+            order: 1;
+        }
+
+        #right {
+            background: #fcc;
+            order: 3;
+        }
+
+        #center {
+            background: #cfc;
+            order: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="left">left<br>left<br>left<br>left<br>left</div>
+        <div id="center">center text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text</div>
+        <div id="right">right<br>right<br>right<br>right</div>
+    </div>
+</body>
+
+</html>
