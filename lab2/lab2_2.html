@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Таблицы</title>
+<style>
+table {
+	width: 200px;
+	border: 1px solid gray;
+	margin: 20px;
+	float: left;
+}
+td, th {
+	border: 1px solid gray;
+	padding: 30px;
+}
+</style>
+</head>
+<body>
+	<table>
+		<caption>1-й шаблон таблицы</caption>
+		<tbody>
+		<tr>
+			<th rowspan="2">1</th>
+            <td colspan="2">2</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>6</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<table>
+		<caption>2-й шаблон таблицы</caption>
+		<tbody>
+		<tr>
+			<th colspan="2">1</th>
+		</tr>
+		<tr>
+			<td rowspan="2">3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>6</td>
+		</tr>
+		</tbody>
+	</table>
+
+    <table>
+        <caption>3-я таблица</caption>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td rowspan="2">2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td colspan="2">5</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>4-я таблица</caption>
+        <tbody>
+            <tr>
+                <td colspan="2">1</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td colspan="2">5</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
