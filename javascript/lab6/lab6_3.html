@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>textarea</title>
+</head>
+
+<body>
+
+    <div id="changeable">Текст для редактирования</div>
+
+    <script>
+        'use strict';
+
+        let div = document.getElementById('changeable');
+        let textarea = null;
+
+        document.onkeydown = function (event) {
+            if (event.ctrlKey && (event.key === 'e' || event.key === 'у')) {
+                event.preventDefault();
+                if (!textarea) {
+                    textarea = document.createElement('textarea');
+                    textarea.value = div.innerHTML;
+                    div.replaceWith(textarea);
+                    textarea.focus();
+                }
+            }
+
+            else if (event.ctrlKey && (event.key === 's' || event.key === 'ы')) {
+                event.preventDefault();
+                if (textarea) {
+                    div.innerHTML = textarea.value;
+                    textarea.replaceWith(div);
+                    textarea = null;
+                }
+            }
+
+            else if (event.key === 'Escape') {
+                if (textarea) {
+                    textarea.replaceWith(div);
+                    textarea = null;
+                }
+            }
+        };
+    </script>
+
+</body>
+
+</html>

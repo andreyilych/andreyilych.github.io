@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Плейсхолдер-подсказка</title>
+    <style>
+        ::placeholder {
+            color: rgb(136, 136, 136);
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="form">
+        <label for="placeholder"></label>
+        <input id="placeholder" type="text" data-placeholder="Введите логин">
+    </form>
+
+    <script>
+        'use strict';
+
+        let form = document.getElementById("form");
+        let field = form.getElementsByTagName('input')[0];
+        let label = form.getElementsByTagName('label')[0];
+
+        label.style.visibility = 'hidden';
+
+        field.setAttribute('placeholder', field.dataset.placeholder);
+        label.innerHTML = field.dataset.placeholder;
+
+        field.addEventListener('focus', () => {
+            label.style.visibility = 'visible';
+            field.setAttribute('placeholder', '');
+        });
+
+        field.addEventListener('blur', () => {
+            label.style.visibility = 'hidden';
+            field.setAttribute('placeholder', field.dataset.placeholder);
+
+        });
+
+    </script>
+
+</body>
+
+</html>

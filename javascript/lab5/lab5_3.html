@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скрыть и показать текст</title>
+    <style>
+        #text {
+            font-size: 20px;
+            margin: 20px 0;
+            height: 1.2em;
+            line-height: 1.2em;
+            overflow: hidden;
+        }
+
+        #toggleButton {
+            font-size: 14px;
+            width: 12.0em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. </div>
+    <button id="toggleButton">Спрятать текст</button>
+
+    <script>
+        'use strict';
+
+        const textElement = document.getElementById('text');
+        const toggleButton = document.getElementById('toggleButton');
+        toggleButton.addEventListener('click', function () {
+            if (textElement.style.visibility === 'hidden') {
+                textElement.style.visibility = 'visible';
+                toggleButton.textContent = 'Спрятать текст';
+            } else {
+                textElement.style.visibility = 'hidden';
+                toggleButton.textContent = 'Показать текст';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

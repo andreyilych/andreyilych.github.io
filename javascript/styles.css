@@ -1,0 +1,22 @@
+h3 {
+    background: #3399ff;
+    color: white;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}
+
+ul {
+    background: #3399ff;
+    padding: 20px;
+}
+
+ul li {
+    margin: 5px;
+}
+
+ul li a {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}

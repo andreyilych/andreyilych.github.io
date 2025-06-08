@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Функция showPrompt</title>
+    <style>
+        #modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #3399ff;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #modal {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 300px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-button {
+            margin: 10px 5px 0 0;
+        }
+
+        #modal-form {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        function showPrompt(html, callback) {
+
+            let overlay = document.createElement('div');
+            overlay.id = 'modal-overlay';
+            document.body.appendChild(overlay);
+
+            let modal = document.createElement('div');
+            modal.id = 'modal';
+            overlay.appendChild(modal);
+
+            modal.innerHTML = `
+            <form id="modal-form">
+                <div>${html}</div>
+                <input type="text" id="modal-input">
+                <div>
+                    <button type="button" class="modal-button" id="modal-ok">OK</button>
+                    <button type="button" class="modal-button" id="modal-cancel">ОТМЕНА</button>
+                </div>
+            </form>
+            `;
+
+            overlay.style.display = 'flex';
+            let input = document.getElementById('modal-input');
+            input.focus();
+
+            document.getElementById('modal-ok').onclick = function () {
+                callback(input.value);
+                closeModal();
+            };
+
+            document.getElementById('modal-cancel').onclick = function () {
+                callback(null);
+                closeModal();
+            };
+
+
+            input.onkeydown = function (event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    callback(input.value);
+                    closeModal();
+                } else if (event.key === 'Escape') {
+                    callback(null);
+                    closeModal();
+                }
+            };
+
+
+            function closeModal() {
+                document.body.removeChild(overlay);
+            }
+
+            modal.onkeydown = function (event) {
+                if (event.key === 'Tab') {
+                    let focusableElements = modal.querySelectorAll('input, button');
+                    let index = Array.prototype.indexOf.call(focusableElements, document.activeElement);
+                    if (event.shiftKey)
+                        index--;
+                    else
+                        index++;
+
+                    if (index >= focusableElements.length)
+                        index = 0;
+
+                    if (index < 0)
+                        index = focusableElements.length - 1;
+
+                    focusableElements[index].focus();
+                    event.preventDefault();
+                }
+            };
+        }
+
+        showPrompt("Введите что-нибудь умное", function (value) {
+            alert(value);
+        });
+    </script>
+
+</body>
+
+</html>

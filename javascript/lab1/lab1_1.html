@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Пенсионный калькулятор</title>
+</head>
+
+<body>
+
+    <h1>Пенсионный калькулятор</h1>
+
+    <form id="pensionForm" onsubmit="return calculatePension(event);">
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age" min="0" required><br><br>
+
+        Пол:<br>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Мужской</label><br>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Женский</label><br><br>
+
+        <button type="submit">Рассчитать</button><br><br>
+
+        <label for="result">Результат:</label><br>
+        <textarea id="result" name="result" rows="4" cols="50" readonly></textarea>
+    </form>
+
+    <script>
+        'use strict';
+
+        function calculatePension(event) {
+            event.preventDefault();
+
+            const age = parseInt(document.getElementById("age").value, 10);
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const result = document.getElementById("result");
+
+            if (isNaN(age) || !gender) {
+                result.value = "Пожалуйста, введите корректный возраст и выберите пол.";
+                return false;
+            }
+
+            let message = "";
+
+            if (age >= 0 && age <= 17) {
+                message = "Вам работать ещё рано — учитесь";
+            } else if ((age >= 18 && age <= 59 && gender.value === "male") || (age >= 18 && age <= 54 && gender.value === "female")) {
+                message = "Вам ещё работать и работать";
+            } else if ((age >= 60 && age <= 64 && gender.value === "male") || (age >= 55 && age <= 59 && gender.value === "female")) {
+                message = "Скоро пенсия!";
+            } else if ((age >= 65 && gender.value === "male") || (age >= 60 && gender.value === "female")) {
+                message = "Вам пора на пенсию";
+            } else {
+                message = "Да кто ты такой?";
+            }
+
+            result.value = message;
+
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>

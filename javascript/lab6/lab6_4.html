@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактируемая таблица</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #3399ff;
+            padding: 8px;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        td textarea {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            resize: none;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .edit-buttons {
+            margin-top: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="editableTable">
+        <tr>
+            <td>Ячейка 1</td>
+            <td>Ячейка 2</td>
+            <td>Ячейка 3</td>
+        </tr>
+        <tr>
+            <td>Ячейка 4</td>
+            <td>Ячейка 5</td>
+            <td>Ячейка 6</td>
+        </tr>
+    </table>
+
+    <script>
+        'use strict';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const table = document.getElementById('editableTable');
+            let currentEditingCell = null;
+
+            table.addEventListener('click', function (e) {
+                const cell = e.target.closest('td');
+                if (!cell || currentEditingCell) return;
+
+                startEditing(cell);
+            });
+
+            function startEditing(cell) {
+                // Сохраняем исходное содержимое
+                const originalContent = cell.innerHTML;
+
+                // Создаем textarea
+                const textarea = document.createElement('textarea');
+                textarea.value = originalContent;
+
+                // Очищаем ячейку и добавляем textarea
+                cell.innerHTML = '';
+                cell.appendChild(textarea);
+                cell.classList.add('editing');
+
+                // Создаем кнопки
+                const buttonsDiv = document.createElement('div');
+                buttonsDiv.className = 'edit-buttons';
+
+                const okButton = document.createElement('button');
+                okButton.textContent = 'OK';
+                okButton.onclick = function () {
+                    cell.innerHTML = textarea.value;
+                    finishEditing();
+                };
+
+                const cancelButton = document.createElement('button');
+                cancelButton.textContent = 'ОТМЕНА';
+                cancelButton.onclick = function () {
+                    cell.innerHTML = originalContent;
+                    finishEditing();
+                };
+
+                buttonsDiv.appendChild(okButton);
+                buttonsDiv.appendChild(cancelButton);
+                cell.appendChild(buttonsDiv);
+
+                // Устанавливаем текущую редактируемую ячейку
+                currentEditingCell = cell;
+
+                // Фокусируем textarea
+                textarea.focus();
+            }
+
+            function finishEditing() {
+                if (!currentEditingCell) return;
+
+                currentEditingCell.classList.remove('editing');
+                currentEditingCell = null;
+            }
+        });
+    </script>
+</body>
+
+</html>
