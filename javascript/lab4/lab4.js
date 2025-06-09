@@ -75,7 +75,11 @@ try {
         books[i].show();
     }
 
-    // Возвращает true если параметр obj содержит в себе пары ключ/значение
+    /**
+     * Возвращает true если параметр obj содержит в себе пары ключ/значение
+     * @param {object} obj - любой объект
+     * @returns {boolean} Cодержит ли в себе obj пары ключ/значение
+     */
     function isEmpty(obj) {
         if (typeof obj !== 'object' || obj === null) return true;
 
@@ -128,7 +132,10 @@ try {
     let object2 = JSON.parse(jsonString);
     console.log('Сравнение объектов из JSON:', JSON.stringify(object2) === JSON.stringify(classObject));
 
-    // Возвращает кол-во секунд с начала текущего дня
+    /**
+     * Возвращает кол-во секунд с начала текущего дня
+     * @returns {number} Количество секунд
+     */
     function getSecondsToday() {
         let now = new Date();
         let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -137,7 +144,10 @@ try {
 
     console.log("Секунд с начала дня: ", getSecondsToday());
 
-    // Возвращает дату в формате ДД.ММ.ГГ
+    /**
+     * Возвращает дату в формате ДД.ММ.ГГ
+     * @returns {string} Форматированная строка с датой
+     */
     function formatDate(date) {
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
