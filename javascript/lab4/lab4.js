@@ -1,10 +1,15 @@
 'use strict';
 
-//-----------------------------------------------------------------------------
-// Book - класс со сведениями о книге
-// title, pubYear, price
-//-----------------------------------------------------------------------------
+/** Book - класс со сведениями о книге */
 class Book {
+
+    /**
+     * Конструктор для создания книги
+     * @constructor
+     * @param {string} title - Название книги
+     * @param {number} pubYear - Дата публикации книги  
+     * @param {number} price - Цена продажи
+     */
     constructor(title, pubYear, price) {
         this.title = title;
         this.pubYear = pubYear;
