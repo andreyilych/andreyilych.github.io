@@ -28,7 +28,7 @@ form {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-form button {
+button {
     border: 1px solid white;
     padding: 10px 20px;
     font-size: 18px;
@@ -38,9 +38,8 @@ form button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-form button:hover {
+button:hover {
     border: 2px solid #3399ff;
-    display: inline-block;
     background-color: white;
     color: black;
 }
